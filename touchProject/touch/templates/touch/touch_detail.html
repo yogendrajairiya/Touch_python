@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}
+  Details of Touch 
+{% endblock %}
+
+{% block content %}
+  <h1>Touch Details Page</h1>
+  <div class="bg-blue-500 rounded-lg shadow-md p-4 m-4 ">
+    <img class="rounded" src="{{ touch.image.url }}" alt="{{ touch.name }}">
+    <p class="rounded">ID: {{ touch.id }}</p>
+    <h2 class="rounded">Name: {{ touch.name }}</h2>
+    <h2 class="rounded">Type: {{ touch.type }}</h2>
+    <p>Description: {{ touch.description }}</p>
+    <a href="{% url 'all_touch' %}" class="text-blue-500 hover:underline">
+      <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Back to All Touches
+      </button>
+    </a>
+{% endblock %}
