@@ -14,9 +14,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
-from . import views
+from django.contrib import admin # for admin site
+from django.urls import path, include # for including other URL configurations
+from django.conf import settings # for accessing settings
+from django.conf.urls.static import static #  for serving static files during development
+from . import views # import views from the current directory
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +28,4 @@ urlpatterns = [
     path('touch/', include('touch.urls')),
     
     path('__reload__/', include('django_browser_reload.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Serve media files during development
