@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}
+  ALL Coffee 
+{% endblock %}
+
+{% block content %}
+  <h1>Welcome to All Coffees Page</h1>
+  <!-- Display all coffees -->
+  {% comment %} <h1 class="text-3xl font-bold mb-4">All coffees</h1>
+  <p class="mb-6">Here is a list of all the coffees available in the Coffee Python Project:</p> {% endcomment %}
+  <div class="grid grid-cols-4 gap-4 m-4" >
+    {% for coffee in coffees %}
+      <div class="bg-blue-200 rounded-lg shadow-md p-4">
+        <img class="rounded" src="{{ coffee.image.url }}" alt="{{ coffee.name }}">
+        <p class="rounded" >{{ coffee.id }}</p>
+        <h2 class="rounded">{{ coffee.name }}</h2>
+        <h2 class="rounded">Type: {{ coffee.type }}</h2>
+        <p>{{ coffee.description }}</p>
+        <a href="{% url 'coffee_detail' coffee.id %}" class="text-blue-500 hover:underline">
+          <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"> 
+            View Details 
+            {{coffee.type}} - {{ coffee.id }}
+          </button>
+        </a>
+
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
