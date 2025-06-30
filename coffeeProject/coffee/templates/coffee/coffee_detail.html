@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}
+  Details of Coffee 
+{% endblock %}
+
+{% block content %}
+  <h1>Coffee Details Page</h1>
+  <div class="bg-blue-500 rounded-lg shadow-md p-4 m-4 ">
+    <img class="rounded" src="{{ coffee.image.url }}" alt="{{ coffee.name }}">
+    <p class="rounded">ID: {{ coffee.id }}</p>
+    <h2 class="rounded">Name: {{ coffee.name }}</h2>
+    <h2 class="rounded">Type: {{ coffee.type }}</h2>
+    <p>Description: {{ coffee.description }}</p>
+    <a href="{% url 'all_coffee' %}" class="text-blue-500 hover:underline">
+      <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Back to All Coffees
+      </button>
+    </a>
+{% endblock %}
