@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  Stores of Coffee
+{% endblock %}
+
+{% block content %}
+  <form method="POST">
+    {% csrf_token %}
+    <label for="coffee">Choose a coffee variety:</label>
+    {{form.as_p }}
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+      Search Stores
+    </button>
+  </form>
+  
+  {% if stores %}
+    <h2>Stores Available </h2>
+    <ul class="grid grid-cols-4 gap-4 m-4">
+      {% for store in stores %}
+        <li class="rounded">{{ store.name }} - {{store.location}}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+    
+
+{% endblock %}
